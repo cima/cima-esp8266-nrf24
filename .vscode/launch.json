@@ -1,0 +1,16 @@
+{       
+    "configurations": [
+        {
+            "type": "cmd",
+
+            "env": {
+                "ESP_TOOLCHAIN_DIR": "e:/SW/ESP",
+                "ESP_PROJECT": "${workspaceFolder}"
+            },
+            "preLaunchTask": {
+                "task": "",
+                "type": ""
+            }
+        }
+    ]
+}
