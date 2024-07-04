@@ -81,5 +81,5 @@
         "valarray": "cpp",
         "variant": "cpp"
     },
-    "idf.adapterTargetName": "esp32"
+    "idf.adapterTargetName": "esp8266"
 }

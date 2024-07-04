@@ -1,8 +1,11 @@
 set(srcs
+    "Agent.h" "Agent.cpp"
 )
 
+
 idf_component_register(SRCS "Nrf24ControlMain.cpp" "${srcs}"
-                    REQUIRES freertos spiffs nvs_flash json pthread
+                    PRIV_REQUIRES cima-system
+                    REQUIRES freertos spiffs nvs_flash json pthread #cima-system
 ) 
 
 enable_language(CXX)
@@ -16,5 +19,7 @@ component_compile_definitions(CORE_DEBUG_LEVEL=4)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
+
+
 
 # spiffs_create_partition_image(storage ../filesystem FLASH_IN_PROJECT)

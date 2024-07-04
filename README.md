@@ -37,27 +37,32 @@ Created by following Espressif's [Get Started](https://docs.espressif.com/projec
 - [Espressif's ESP8266 toolchain](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/windows-setup.html)
   - **xtensa-lx106-elf** compilers are sufficient
   - ~~MSYS prebuilt toolchain~~ is not necessary
-4. Clone _ESP8266_RTOS_SDK_ to folder from step 2. e.g. `./ESP8266/ESP8266_RTOS_SDK/`
+4. Clone _ESP8266_RTOS_SDK_ to folder from step 2. e.g. `./ESP8266/`
 ```
     git clone --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
 ```
-5. Clone _ESP-IoT-solution_ to folder from step 2. e.g. `./ESP/esp-iot-solution/`
+5. Modify file *env.bat* so the variable `ESP_TOOLCHAIN_DIR` points towards the directory from step 2.
+
+6. Run *install_idf.bat* from direcrtory of this project.
+```
+  ./install_idf.bat
+```
+7. Clone _ESP-IoT-solution_ to folder from step 2. e.g. `./ESP/esp-iot-solution/`
 ```
     git clone --recursive https://github.com/espressif/esp-iot-solution.git
 ```
-6. get Boost via [BOOST download](https://www.boost.org/users/download/) and unpack it to folder from step 2. E.g. `./ESP8266/boost_1_85_0/`
+8. get Boost via [BOOST download](https://www.boost.org/users/download/) and unpack it to folder from step 2. E.g. `./ESP8266/boost_1_85_0/`
 
-7. Update file `init_cmd.bat` in this project (from step 1) so the first variable `ESP_TOOLCHAIN_DIR` contains the absolute prefix of your toolchain directory. Also change the name of the boost folder in the bat file.
-8. Fisrt build
+9. Update file `init_cmd.bat` in this project (from step 1) with the name of the boost folder.
+10. Fisrt build
 ```
-  cd ./cima-esp8266-nrf24/
   ./init_cmd.bat
-  python -m %IDF_PATH%/tools/idf.py build
+  idf.py build
 ```
 
 ## Build
 ```
-   python -m %IDF_PATH%/tools/idf.py build
+  idf.py build
 ```
 
 ## Flash
@@ -71,3 +76,7 @@ Using putty
 ## ESP8266LuaNodeMcu V3
 
 ![ESP8266LuaNodeMcu V3 Pinout](https://www.laskakit.cz/user/related_files/nodemcuv3_0-pinout.jpg)
+
+# Readings
+
+[atomic_c11.c](https://github.com/iot-lab/riot-upstream/blob/master/core/atomic_c11.c)
