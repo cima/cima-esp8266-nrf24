@@ -73,6 +73,38 @@ Created by following Espressif's [Get Started](https://docs.espressif.com/projec
 ## Run
 Using putty
 
+## Debug
+
+### Analyse crashdump stacktrace
+
+```bat
+xtensa-lx106-elf-addr2line.exe -fe build\CIMA-ESP8266-NRF24.elf 0x4000bf80:0x3ffe9ff0 0x4022869d:0x3ffe9ff0
+```
+
+the hexa mess are items from stack trace obtained from crash dump report
+
+```
+Guru Meditation Error: Core  0 panic'ed (LoadProhibited). Exception was unhandled.
+Core 0 register dump:
+PC      : 0x4000bf80  PS      : 0x00000030  A0      : 0x4022869d  A1      : 0x3ffe9ff0
+A2      : 0x00000000  A3      : 0xfffffffc  A4      : 0x000000ff  A5      : 0x0000ff00
+A6      : 0x00ff0000  A7      : 0xff000000  A8      : 0x00000000  A9      : 0x00000003
+A10     : 0xffffffff  A11     : 0x3ffe87f8  A12     : 0x00000002  A13     : 0x3ffea1ec
+A14     : 0x00000003  A15     : 0x00000000  SAR     : 0x00000004  EXCCAUSE: 0x0000001c
+
+Backtrace: 0x4000bf80:0x3ffe9ff0 0x4022869d:0x3ffe9ff0 Guru Meditation Error: Core  0 panic'ed (LoadStoreAlignment). Exception was unhandled.
+Core 0 register dump:
+PC      : 0x4021f3a5  PS      : 0x00000033  A0      : 0x4021f318  A1      : 0x3ffe8ca0
+A2      : 0x0001868d  A3      : 0x0000199d  A4      : 0x3ffea013  A5      : 0x3ffea00f
+A6      : 0x000007fe  A7      : 0x000000a3  A8      : 0x000000c0  A9      : 0x00000003
+A10     : 0xffffffff  A11     : 0x3ffe87f8  A12     : 0x4022869d  A13     : 0x3ffe8cd4
+A14     : 0x4022869d  A15     : 0x4022869d  SAR     : 0x0000001f  EXCCAUSE: 0x00000009
+
+Backtrace: 0x4021f3a5:0x3ffe8ca0 0x40213b77:0x3ffe8cd0 0x40100edc:0x3ffe8d10
+```
+
+to prevenrt ESP from restarting on exception just compile the project with *./sdkconfig* file containing line `CONFIG_ESP_PANIC_PRINT_HALT=y`
+
 ## ESP8266LuaNodeMcu V3
 
 ![ESP8266LuaNodeMcu V3 Pinout](https://www.laskakit.cz/user/related_files/nodemcuv3_0-pinout.jpg)

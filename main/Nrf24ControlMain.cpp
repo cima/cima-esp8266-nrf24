@@ -16,7 +16,8 @@
 
 #include <cJSON.h>
 
-cima::system::Log logger("main");
+static const std::string MAIN("main");
+cima::system::Log logger(MAIN);
 
 cima::Agent agent;
 cima::system::ButtonController buttonController(GPIO_NUM_0);

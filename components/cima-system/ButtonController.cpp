@@ -1,8 +1,10 @@
 #include <system/ButtonController.h>
 
+#include <functional>
+
 namespace cima::system {
-    
-    const Log ButtonController::LOGGER("ButtonController");
+    static const std::string BUTTON_CONTROLLER_NAME("ButtonController");
+    const Log ButtonController::LOGGER(BUTTON_CONTROLLER_NAME);
 
     ButtonController::ButtonController(gpio_num_t buttonGpioPin) : buttonGpioPin(buttonGpioPin) {}
 
