@@ -28,33 +28,37 @@ Created by following Espressif's [Get Started](https://docs.espressif.com/projec
 ## Prepare environment
 
 1. Clone this project somewhere e.g. `./cima-esp8266-nrf24/`
-2. Create separate ESP toolchain and libraries folder e.g. `./ESP8266/`
+2. Clone project with shared components []() side-by-side to this project. E.g. `./cima-esp-components/`
+```
+git clone git@github.com:cima/cima-esp-components.git
+```
+3. Create separate ESP toolchain and libraries folder e.g. `./ESP8266/`
 ```
     mkdir ./ESP8266/
     cd ./ESP8266/
 ```
-3. Unpack Espressif's ESP8266 toolchain into above created ./ESP8266/ directory
+4. Unpack Espressif's ESP8266 toolchain into above created ./ESP8266/ directory
 - [Espressif's ESP8266 toolchain](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/windows-setup.html)
   - **xtensa-lx106-elf** compilers are sufficient
   - ~~MSYS prebuilt toolchain~~ is not necessary
-4. Clone _ESP8266_RTOS_SDK_ to folder from step 2. e.g. `./ESP8266/`
+5. Clone _ESP8266_RTOS_SDK_ to folder from step 2. e.g. `./ESP8266/`
 ```
     git clone --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
 ```
-5. Modify file *env.bat* so the variable `ESP_TOOLCHAIN_DIR` points towards the directory from step 2.
+6. Modify file *env.bat* so the variable `ESP_TOOLCHAIN_DIR` points towards the directory from step 2.
 
-6. Run *install_idf.bat* from direcrtory of this project.
+7. Run *install_idf.bat* from direcrtory of this project.
 ```
   ./install_idf.bat
 ```
-7. Clone _ESP-IoT-solution_ to folder from step 2. e.g. `./ESP/esp-iot-solution/`
+8. Clone _ESP-IoT-solution_ to folder from step 2. e.g. `./ESP/esp-iot-solution/`
 ```
     git clone --recursive https://github.com/espressif/esp-iot-solution.git
 ```
-8. get Boost via [BOOST download](https://www.boost.org/users/download/) and unpack it to folder from step 2. E.g. `./ESP8266/boost_1_85_0/`
+9. get Boost via [BOOST download](https://www.boost.org/users/download/) and unpack it to folder from step 2. E.g. `./ESP8266/boost_1_85_0/`
 
-9. Update file `init_cmd.bat` in this project (from step 1) with the name of the boost folder.
-10. Fisrt build
+10. Update file `init_cmd.bat` in this project (from step 1) with the name of the boost folder.
+11. Fisrt build
 ```
   ./init_cmd.bat
   idf.py build
