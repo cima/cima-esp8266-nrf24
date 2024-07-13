@@ -109,6 +109,26 @@ to prevenrt ESP from restarting on exception just compile the project with *./sd
 
 ![ESP8266LuaNodeMcu V3 Pinout](https://www.laskakit.cz/user/related_files/nodemcuv3_0-pinout.jpg)
 
+### LED
+- *D4 (GPIO2)*
+The built-in LED on the NodeMCU ESP8266 v3 development board is connected to GPIO2 (also labeled as D4). Keep in mind that this LED operates with active low logic: setting PIN 2 to ‘0’ turns the LED ON, while setting it to ‘1’ turns the LED OFF. 
+
+### Button (flash)
+- *D3 (GPIO0)*
+a button subtitled flash is connected to pin D3 and can be used for any purpose within your programm.
+It does have special meaning during program upploading in some scenarios to switch to flashing mode. When program uuns it is available for general purpose usage.
+
+### PWM
+- 10bit resolution
+- 1 KHz frequency
+
+Pins
+- D1 (GPIO5)
+- D2 (GPIO4)
+- D5 (GPIO14)
+- D6 (GPIO12)
+
+
 # Readings
 
 [atomic_c11.c](https://github.com/iot-lab/riot-upstream/blob/master/core/atomic_c11.c)

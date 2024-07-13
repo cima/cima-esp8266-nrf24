@@ -17,13 +17,14 @@ namespace cima::system {
         io_conf.pull_down_en = GPIO_PULLDOWN_ENABLE;
 
         esp_err_t gpioError = gpio_config(&io_conf);
-        LOGGER.debug("Po globál dobrý 0x%x", gpioError);
+        LOGGER.debug("Configuring desired pin for button: 0x%x", gpioError);
 
         int isrFlags = 0;
+        //FIXM this is to be separated from button controller and run once in whole system
         esp_err_t isrError = gpio_install_isr_service(isrFlags);
         if(isrError == ESP_OK){
             esp_err_t handlerError = gpio_isr_handler_add(buttonGpioPin, &ButtonController::gpioButtonHandlerWrapper, this);
-            LOGGER.debug("Instalace handleru 0x%x", handlerError);
+            LOGGER.debug("Handler installation result: 0x%x", handlerError);
         }else{
             LOGGER.error("Can't instal ISR service: 0x%x", isrError);
         }
