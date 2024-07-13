@@ -20,11 +20,16 @@ namespace cima::system {
 
         const gpio_num_t pwmGpioPin;
         const ledc_channel_t channel;
-        ledc_timer_bit_t resolution;
+
+        /* Even though the physical resolution of ESP8266's timer is 10bit,
+        the ledc library unifies the resolution to 13bit and never respcets this setting.
+        Our libs do use it for sofrware inversion of the duty cycle. */
+        const ledc_timer_bit_t resolution;
+
         const bool inverted = false;
 
     public:
-        PWMDriver(gpio_num_t pwmGpioPin, ledc_channel_t channel, ledc_timer_bit_t resolution = LEDC_TIMER_13_BIT, bool inverted = false);
+        PWMDriver(gpio_num_t pwmGpioPin, ledc_channel_t channel, bool inverted = false);
 
         void update(uint32_t dutyCycle);
     };

@@ -1,8 +1,8 @@
 #include <system/PWMDriver.h>
 
 namespace cima::system {
-    PWMDriver::PWMDriver(gpio_num_t pwmGpioPin, ledc_channel_t channel, ledc_timer_bit_t resolution, bool inverted) 
-            : pwmGpioPin(pwmGpioPin), channel(channel), resolution(resolution), inverted(inverted) {
+    PWMDriver::PWMDriver(gpio_num_t pwmGpioPin, ledc_channel_t channel, bool inverted) 
+            : pwmGpioPin(pwmGpioPin), channel(channel), resolution(LEDC_TIMER_13_BIT), inverted(inverted) {
 
         ledc_channel.gpio_num = this->pwmGpioPin;
         ledc_channel.speed_mode = LEDC_HIGH_SPEED_MODE;
@@ -11,9 +11,9 @@ namespace cima::system {
         ledc_channel.timer_sel = LEDC_TIMER_0;
         ledc_channel.duty = 0;
 
-        ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE; //TODO do proměnný
-        ledc_timer.duty_resolution = resolution;
-        ledc_timer.timer_num = LEDC_TIMER_0; //TODO do proměnný
+        ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE; //TODO unused
+        ledc_timer.duty_resolution = resolution; //TODO unused
+        ledc_timer.timer_num = LEDC_TIMER_0; //TODO unused
         ledc_timer.freq_hz = 1000;
 
         ledc_channel_config(&ledc_channel);
@@ -28,7 +28,7 @@ namespace cima::system {
     }
 
     void PWMDriver::update(uint32_t dutyCycle) {
-        ledc_set_duty(LEDC_HIGH_SPEED_MODE, this->channel, inverted ? (0x01 << resolution) - dutyCycle : dutyCycle);
+        ledc_set_duty(LEDC_HIGH_SPEED_MODE, this->channel, inverted ? (0x01 << resolution) - 1 - dutyCycle : dutyCycle);
 	    ledc_update_duty(LEDC_HIGH_SPEED_MODE, this->channel);
     }
 }
