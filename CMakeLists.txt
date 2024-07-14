@@ -7,7 +7,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 # ESP8266 imports
 # ------------- 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-set(EXTRA_COMPONENT_DIRS ../cima-esp-components)
+list(APPEND EXTRA_COMPONENT_DIRS ../cima-esp-components/components)
 
 enable_language(CXX)
 set(CMAKE_CXX_STANDARD 20)

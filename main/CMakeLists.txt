@@ -5,7 +5,7 @@ set(srcs
 
 idf_component_register(SRCS "Nrf24ControlMain.cpp" "${srcs}"
                     PRIV_REQUIRES cima-system
-                    REQUIRES freertos spiffs nvs_flash json pthread #cima-system
+                    REQUIRES freertos spiffs nvs_flash json pthread
 ) 
 
 enable_language(CXX)

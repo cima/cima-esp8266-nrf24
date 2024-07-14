@@ -32,13 +32,16 @@ static uint32_t ledDutyCycle = 0;
 extern "C" void app_main(void) { 
     logger.info("Hello from ESP");
 
+    cima::system::PWMDriver::init();
+    cima::system::PWMDriver::init();
+
     logger.info("Registering button handler");
     buttonController.initButton();
     buttonController.addHandler([&](){ 
         logger.info("Button pressed. Duty %d", ledDutyCycle);
         
         //one physical step (10bit) represented in 13bit resolution.
-        ledDutyCycle += (0x01 << 3); 
+        ledDutyCycle += (0x01 << 3)*10; 
         ledDutyCycle &= 0x1FFF; //13bit mask = modulo 2^13
         redLedDriver.update(ledDutyCycle);
     });
