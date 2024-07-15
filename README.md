@@ -132,6 +132,23 @@ Pins
 - D5 (GPIO14)
 - D6 (GPIO12)
 
+## nRF24
+
+I use [nRF24L01p+ PA+ LNA 2.4GHz](https://www.laskakit.cz/bezdratovy-modul-nrf24l01p--pa--lna-2-4ghz/) transciever as a base for a remote controler.
+
+The connection to NodeMCU is done based on arduino tutorial [ESP8266 NRF24L01 Wifi Gateway with Arduino NRF24L01 Node](ESP8266 NRF24L01 Wifi Gateway with Arduino NRF24L01 Node)
+
+|NRF24L01|Node MCU|GPIO|
+|--------|--------|----|
+|MISO    |      D6| HMISO/GPIO12|
+|MOSI    |      D7| HMOSI/GPIO13|
+|SCK     |      D5| HSCLK/GPIO45|
+|CE      |      D4| GPIO2|
+|CSN     |      D2| GPIO4|
+|VCC     |      3V| 3.3 V|
+|GND     |       G| GND|
+
+![Receiver Circuit: NRF24L01 ESP8266 Gateway](https://how2electronics.com/wp-content/uploads/2020/06/NRF24L01-ESP8266-Node.jpg)
 
 # Readings
 
